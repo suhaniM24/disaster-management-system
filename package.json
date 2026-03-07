@@ -1,0 +1,14 @@
+{
+  "name": "disaster-response-system",
+  "version": "1.0.0",
+  "description": "Cloud-Based Disaster Management & Emergency Response System",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

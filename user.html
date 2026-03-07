@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Dashboard | Disaster Response</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-dark text-white">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-danger">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-danger" href="index.html">
+                <i class="bi bi-broadcast"></i> LIVE ALERTS
+            </a>
+            <div class="d-flex align-items-center">
+                <a href="map.html" class="btn btn-emergency btn-sm me-2">Live Map</a>
+                <a href="index.html" class="btn btn-outline-light btn-sm">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+
+        <!-- Stats Row -->
+        <div class="row g-4 mb-5 fade-in">
+            <div class="col-md-3">
+                <div class="card glass-card p-3 stat-card text-center border-danger">
+                    <h2 id="total-active" class="fw-bold mb-0">0</h2>
+                    <p class="text-secondary small mb-0">Active Disasters</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card glass-card p-3 stat-card text-center border-warning">
+                    <h2 id="critical-alerts" class="fw-bold mb-0 text-danger">0</h2>
+                    <p class="text-secondary small mb-0">Critical Threats</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card glass-card p-3 stat-card text-center border-info">
+                    <h2 id="regions-affected" class="fw-bold mb-0">0</h2>
+                    <p class="text-secondary small mb-0">Regions Affected</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card glass-card p-3 stat-card text-center border-success">
+                    <h2 id="people-affected" class="fw-bold mb-0 text-success">0</h2>
+                    <p class="text-secondary small mb-0">Total at Risk</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            <!-- Alert Cards Feed -->
+            <div class="col-lg-8">
+                <h4 class="fw-bold mb-4 d-flex align-items-center">
+                    <span class="p-2 bg-danger rounded-circle me-2"
+                        style="width: 10px; height: 10px; animation: pulse 1s infinite;"></span>
+                    Live Incident Feed
+                </h4>
+                <div id="alert-feed" class="row row-cols-1 g-4">
+                    <!-- Dynamic Alert Cards Loading -->
+                    <div id="feed-loader" class="text-center py-5">
+                        <div class="spinner-border text-danger"></div>
+                        <p class="text-secondary mt-2">Connecting to Real-time Stream...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panels -->
+            <div class="col-lg-4">
+
+                <!-- Email Alerts Subscription -->
+                <div class="card glass-card p-4 mb-4">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-envelope-heart-fill text-danger"></i> Stay Informed</h5>
+                    <p class="small text-secondary mb-4">Subscribe to receive instant email notifications for critical
+                        disasters in your region.</p>
+                    <form id="subscribe-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control bg-dark border-secondary text-white" id="sub-email"
+                                placeholder="email@example.com" required>
+                            <button class="btn btn-emergency" type="submit" id="sub-btn">🔔 Subscribe</button>
+                        </div>
+                    </form>
+                    <div id="sub-message" class="alert alert-success d-none py-2 small">
+                        <i class="bi bi-check-circle-fill"></i> Subscribed Successfully!
+                    </div>
+                </div>
+
+                <!-- Emergency Resources -->
+                <div class="card glass-card p-4">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-info-circle-fill text-info"></i> Safety Guidelines</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3 small d-flex">
+                            <i class="bi bi-arrow-right-circle text-danger me-2"></i>
+                            <div><strong>Earthquake:</strong> Drop, Cover, and Hold on. Stay away from windows.</div>
+                        </li>
+                        <li class="mb-3 small d-flex">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            <div><strong>Flood:</strong> Move to higher ground immediately. Do not walk through water.
+                            </div>
+                        </li>
+                        <li class="small d-flex">
+                            <i class="bi bi-arrow-right-circle text-warning me-2"></i>
+                            <div><strong>Wildfire:</strong> Evacuate early. Keep windows and doors closed.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+
+    <!-- User Dashboard Logic -->
+    <script src="js/user.js"></script>
+</body>
+
+</html>
